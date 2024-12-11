@@ -1,47 +1,34 @@
 package main.java.com.yourpackage;
 
-// Main.java
+import java.util.Stack;
+
 public class Main {
+
+    // Simulate a real-world stack usage in a function call hierarchy
     public static void main(String[] args) {
-        // Initialize stack with a maximum size of 4
-        DishStack stack = new DishStack(4);
+        System.out.println("Real-World Example: Function Call Stack");
 
-        // Create some dishes
-        Dish oneDish = new Dish("A dish with one fish pattern on it");
-        Dish twoDish = new Dish("A dish with two fish patterns on it");
-        Dish redDish = new Dish("A dish with a red fish pattern on it");
-        Dish blueDish = new Dish("A dish with a blue fish pattern on it");
+        // Create a stack to simulate a call stack
+        Stack<String> callStack = new Stack<>();
 
-        // Test size when stack is empty
-        System.out.println("Stack size: " + stack.size()); // Output: 0
+        // Simulate function calls
+        System.out.println("Calling main()");
+        callStack.push("main()");
 
-        // Push dishes onto the stack
-        stack.push(oneDish);
-        stack.push(twoDish);
-        stack.push(redDish);
-        stack.push(blueDish);
+        System.out.println("Calling functionA()");
+        callStack.push("functionA()");
 
-        // Check size after pushes
-        System.out.println("Stack size after pushes: " + stack.size()); // Output: 4
+        System.out.println("Calling functionB()");
+        callStack.push("functionB()");
 
-        // Peek at the top dish
-        Dish peekedDish = stack.peek();
-        if (peekedDish != null) {
-            System.out.println("Top dish description (peek): " + peekedDish.description);
+        // Simulate function returns
+        System.out.println("Returning from: " + callStack.pop());
+        System.out.println("Returning from: " + callStack.pop());
+        System.out.println("Returning from: " + callStack.pop());
+
+        // Check if stack is empty
+        if (callStack.isEmpty()) {
+            System.out.println("Call stack is empty. All functions have returned.");
         }
-
-        // Pop dishes from the stack
-        Dish poppedDish = stack.pop();
-        if (poppedDish != null) {
-            System.out.println("Popped dish description: " + poppedDish.description);
-        }
-
-        Dish anotherPoppedDish = stack.pop();
-        if (anotherPoppedDish != null) {
-            System.out.println("Another popped dish description: " + anotherPoppedDish.description);
-        }
-
-        // Final size after pops
-        System.out.println("Final stack size: " + stack.size()); // Output: 2
     }
 }
